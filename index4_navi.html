@@ -459,18 +459,14 @@ function downloadResults() {
     return;
   }
 
-let csvContent = "음성번호,선택여부,이유\n";
+  let csvContent = "음성번호,선택여부,이유\n";
 
-allVoiceCards.forEach(card => {
-  const voiceNum = card.querySelector('.voice-number').textContent.trim();
-  const isChecked = card.querySelector('input[name="voice"]').checked ? "O" : "X";
-  
-  const reasonRaw = card.querySelector('.reason-input').value.trim();
-  const reasonEscaped = reasonRaw.replace(/"/g, '""');  // 쌍따옴표 처리
-  const reason = `"${reasonEscaped}"`;  // 쌍따옴표로 감싸기
-  
-  csvContent += `${voiceNum},${isChecked},${reason}\n`;
-});
+  allVoiceCards.forEach(card => {
+    const voiceNum = card.querySelector('.voice-number').textContent.trim();
+    const isChecked = card.querySelector('input[name="voice"]').checked ? "O" : "X";
+    const reason = card.querySelector('.reason-input').value.trim().replace(/,/g, "");
+    csvContent += `${voiceNum},${isChecked},${reason}\n`;
+  });
 
 
   const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
@@ -486,12 +482,6 @@ document.querySelectorAll('.reason-input').forEach(textarea => {
   textarea.addEventListener('input', function(e) {
     this.value = this.value.replace(/[\n\r,]/g, ''); // 엔터, 줄바꿈, 쉼표 모두 삭제
   });
-
-  textarea.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault(); // 엔터는 아예 막기
-    }
-  });
 });
 
 </script>
@@ -500,6 +490,7 @@ document.querySelectorAll('.reason-input').forEach(textarea => {
 
 </body>
 </html>
+
 
 
 
