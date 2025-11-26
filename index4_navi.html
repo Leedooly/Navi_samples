@@ -459,14 +459,19 @@ function downloadResults() {
     return;
   }
 
-  let csvContent = "음성번호,선택여부,이유\n";
+let csvContent = "음성번호,선택여부,이유\n";
 
-  allVoiceCards.forEach(card => {
-    const voiceNum = card.querySelector('.voice-number').textContent.trim();
-    const isChecked = card.querySelector('input[name="voice"]').checked ? "O" : "X";
-    const reason = card.querySelector('.reason-input').value.trim().replace(/,/g, "");
-    csvContent += `${voiceNum},${isChecked},${reason}\n`;
-  });
+allVoiceCards.forEach(card => {
+  const voiceNum = card.querySelector('.voice-number').textContent.trim();
+  const isChecked = card.querySelector('input[name="voice"]').checked ? "O" : "X";
+  
+  const reasonRaw = card.querySelector('.reason-input').value.trim();
+  const reasonEscaped = reasonRaw.replace(/"/g, '""');  // 쌍따옴표 처리
+  const reason = `"${reasonEscaped}"`;  // 쌍따옴표로 감싸기
+  
+  csvContent += `${voiceNum},${isChecked},${reason}\n`;
+});
+
 
   const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
   const link = document.createElement("a");
@@ -495,6 +500,7 @@ document.querySelectorAll('.reason-input').forEach(textarea => {
 
 </body>
 </html>
+
 
 
 
