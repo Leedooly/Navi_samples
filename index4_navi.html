@@ -477,18 +477,24 @@ function downloadResults() {
   document.body.removeChild(link);
 }
 
-  document.querySelectorAll('.reason-input').forEach(textarea => {
-    textarea.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-      }
-    });
+document.querySelectorAll('.reason-input').forEach(textarea => {
+  textarea.addEventListener('input', function(e) {
+    this.value = this.value.replace(/[\n\r,]/g, ''); // 엔터, 줄바꿈, 쉼표 모두 삭제
   });
+
+  textarea.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // 엔터는 아예 막기
+    }
+  });
+});
+
 </script>
 
 </script>
 
 </body>
 </html>
+
 
 
