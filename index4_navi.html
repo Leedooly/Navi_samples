@@ -479,7 +479,7 @@ function downloadResults() {
   const encodedUri = "data:text/csv;charset=utf-8," + encodeURIComponent(csvContent);
   const link = document.createElement("a");
   link.setAttribute("href", encodedUri);
-  link.setAttribute("download", `Ebook_${name}_results.csv`);
+  link.setAttribute("download", `Navi_${name}_results.csv`);
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -497,6 +497,7 @@ document.querySelectorAll('.reason-input').forEach(textarea => {
 
 </body>
 </html>
+
 
 
 
