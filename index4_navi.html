@@ -155,17 +155,36 @@ audio.voice {
     background-color: #265ecf;
   }
   p.upload-info {
-    color: blue;
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 16px; 
+    color: #1a3d7c;
+  }
+  p.upload-info b {
+    font-weight: 700;
+  }
+  .upload-button-wrapper {
     text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
+    margin-top: 10px;
   }
-  p.upload-info a {
-    color: red;
+  .upload-button-wrapper a {
+    display: inline-block;
+    background-color: #3a86ff;
+    color: white;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 8px;
     text-decoration: none;
+    transition: background-color 0.3s ease;
   }
-  p.upload-info a:hover {
-    text-decoration: underline;
+  .upload-button-wrapper a:hover {
+    background-color: #265ecf;
+  }
+  .upload-note {
+    text-align: center; 
+    margin-top: 6px; 
+    font-size: 13px; 
+    color: #555;
   }
 
   audio::-webkit-media-controls-overflow-button {
@@ -415,8 +434,18 @@ audio.voice {
 </div>
 
 <p class="upload-info">
-  제출 후 다운로드된 <b>[Navi]_[이름]_results.csv</b> 파일을 아래의 [업로드하기] 링크로 들어가서 업로드해주세요. (마우스 드래그로도 업로드 가능합니다)<br>
-  <a href="https://drive.google.com/drive/u/0/folders/1c0Vr-Ax-dnAKpMVzVIKnN1GSdw8lLAcw" target="_blank">[업로드하기]</a>
+  제출 후 다운로드된 <b>[Navi]_[이름]_results.csv</b> 파일을<br>
+  아래 버튼을 눌러 업로드해주세요.
+</p>
+
+<div class="upload-button-wrapper">
+  <a href="https://drive.google.com/drive/u/0/folders/1c0Vr-Ax-dnAKpMVzVIKnN1GSdw8lLAcw" target="_blank">
+    📤업로드하기
+  </a>
+</div>
+
+<p class="upload-note">
+  ※ 마우스 드래그로도 파일을 업로드할 수 있습니다.
 </p>
 
 <script>
@@ -495,6 +524,7 @@ document.querySelectorAll('.reason-input').forEach(textarea => {
 
 </body>
 </html>
+
 
 
 
