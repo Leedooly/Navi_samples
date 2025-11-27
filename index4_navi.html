@@ -506,7 +506,7 @@ function downloadResults() {
 
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = `Ebook_${name}_results.csv`;
+  link.download = `Navi_${name}_results.csv`;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -522,6 +522,7 @@ document.querySelectorAll('.reason-input').forEach(textarea => {
 
 </body>
 </html>
+
 
 
 
